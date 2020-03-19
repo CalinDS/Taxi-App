@@ -1,0 +1,58 @@
+Calin Dragos Stefan
+315 CA
+
+Data inceperii temei: 30.04.2019
+Data finalizatii temei: 04.05.2019
+
+Probleme intampinate:
+- Mi-au pus probleme restrictiile legate de timpul de executie si le-am
+rezolvat doar partial. Am micsorat complexitatea folosind Hashtable si,
+pentru ordonare, am considerat ca este mai optim sa folosesc skipList-ul 
+de la tema trecuta. 
+- O problema era ca pe vmchecker imi luam memory leaks (probabil
+iesea din program pana sa mi se dealoce memoria) desi pe local imi luam doar
+timeout la task4 pentru testele 8, 9, 10), si pierdeam si punctajele pe
+task 1, 2 si 3 la testele respective.
+- Am mai avut ceva probleme la o formulare ambigua din enunt, legata de cazul
+Destinatiei inaccesibile, pentru ca nu am inteles exact cum se considera
+vecinii si cum se alege care din vecinii eligibili va fi noua destinatie
+(daca sunt mai multi). Am optat pana la urma sa raman la primul vecin gasit.
+
+Algoritmul utilizat:
+- Am citit intersectiile intr-un vector de string-uri si le-am bagat intr-un
+dictionar in care cheia era numele lor iar valoarea, indicele lor din vector.
+Cu valorile din dictionar am creat graful, si folosind BFS aflam distanta
+minima dintre doua intersectii. Daca nu exista drum intre ele, distanta era
+considerata -1.
+- Am creat o clasa Driver pentru soferi, si am folosit si pentru ei un
+dictionar in care cheia era numele soferilor. Apoi, cand eram in cazul in care
+se solicita o cursa, verificam mai intai daca exista soferi disponibili.
+Daca existau, bagam in vectorul dists distanta de la sofer la pozitia in care
+se afla clientul. Verific apoi daca destinatia e accesibila, si daca nu e,
+caut sa o inlocuiesc cu vecinii. Daca am si destinatie si soferi aceesibili,
+bag in skiplist soferii care se afla la distanta minima, si, la modul la care
+am definit operatorul <, skiplist-ul mi-i ordoneaza descrescator, si trebuie
+doar sa il aleg pe soferul de pe prima pozitie in skiplist si sa ii actualizez
+caracteristicile (locatie, rating etc.).
+- Pentru topuri, am mai facut doua clase de driveri, care au doar numele si
+statistica dupa care se face top-ul si operatorul < definit in functie de
+aceasta statistica. Fac vectorii de Driver2 si Driver3 in functie de vectorul
+de Driver, ii bag in skiplist-ul care mi-i ordoneaza si ii afisez ordonati,
+fara sa am nevoie de swap (indecsii si ordinea lor in vectorul initial drivers
+se pastreaza).
+- Pentru info, iau soferul din dictionar si il afisez cu operatorul <<
+suprascris.
+- La task-ul 5 am o abordare asemanatoare cu cea de la top-urile task-ului 4.
+Fac o noua clasa pentru intersectii, bag intersectiile care au distanta
+fata de pozitia soferului optima in skiplist si le afisez, avand grija la
+dubluri.
+
+Complexitate si alte precizari:
+- Tema a fost destul de dificila, mai dificila decat prima, dar era de
+asteptat. Consider deci ca nivelul de dificultate a fost adecvat, mai
+ales in contextul in care am primit timp si in vacanta. Mi-a placut
+faptul ca am fost pus sa folosesc structurile de date facute la curs
+si la laborator, le-am inteles mai bine aplicatiile acum, mai ales ca am
+realizat practic o simulare a ceva util si utilizat in lumea reala.
+
+
